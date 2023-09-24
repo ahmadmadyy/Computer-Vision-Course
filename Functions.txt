@@ -1,0 +1,410 @@
+A. NumPy:
+
+library: import numpy as np
+
+1. type(something) returns the data type
+
+2. np.array(name) creates an array
+
+3. np.arange(min value,max value,step) creates an array of ordered values starting from min value to max value in a step of step
+
+4. np.zeros(shape) creates an array of zeros with the given shape
+
+5. something.shape return the shape of size of something
+
+6. np.ones(shape) creates an array of ones with the given shape
+
+7. np.random.seed(101) returns the same random nums each time
+
+8. np.random.randint(min value,max value,num) returns an array of random values between the min value inclusive and max value exclusive with count num
+
+9. arr.max() returns the maximum value of an array
+
+10. arr.min() returns the minimum value of an array
+
+11. arr.argmax() returns the index of the maximum value in the array
+
+12. arr.argmin() returns the index of the minumum value in the array
+
+13. arr.mean() returns the mean of the values in the array
+
+14. arr.reshape(shape) reshapes the values in the array to the shape
+
+15. np.arange(min value,max value) returns evenly spaced values within a min value inclusive and max value exclusive
+
+16. mat[:,column] returns all the values in the column indicated
+
+17. mat[row,:] returns all the values in the row indicated
+
+18. something.copy() returns a copt of the copied something
+
+19. np.asarray(pic) converts the picture pic to a numpy array
+
+20. np.full(img.shape,255,dtype=np.uint8) converts the 2D shape to 3D by creating an array of ones and multiplying it by 255 (m,n) to (m,n,3) as a white background
+
+21. np.power(img,gamma) performs gamma correction based on the gamma value, gamma<1 the fading out increases, and gamma>1 image appears darker
+
+22. np.median(img) calculate the median pixel value of an image
+
+23. array.append(array) adds elements to an array
+
+24. zip() function returns a zip object, which is an iterator of tuples where the first item in each passed iterator      is paired together, and then the second item in each passed iterator are paired together etc. If the passed iterators have different lengths, the iterator with the least items decides the length of the new iterator.
+
+25. enumerate() method adds a counter to an iterable and returns it in a form of enumerating object. This enumerated object can then be used directly for loops or converted into a list of tuples using the list() function.
+
+26. array.ravel() joins to arrays to a single array
+
+27. np.zeros_like(img) creates a new image with the same size as img
+
+28. str(string).split() separates text
+
+29. img = np.expand_dims(img,axis=0) converts from (m,n,p) to (1,m,n,p)
+
+-----------------------------------------------------
+
+B. PIL:
+
+library: from PIL import Image
+
+1. Image.open(path) opens an images from the indicated path
+
+-----------------------------------------------------
+
+C. Pyplot:
+
+library: import matplotlib.pyplot as plt
+%matplotlib inline
+
+library: from matplotlib import cm grab color mappings from matplotlib library Qualitative Colormaps
+
+1. plt.imshow(pic_arr) shows the image on the screen
+
+2. plt.imshow(pic_red[:,:,0],cmap = 'gray') #show only the red array and color mapped to gray
+#Red values: 0 = no red,pure black... 255 = full red
+#in this image, closer to white, more red
+
+3. plt.plot(values) plots in 2D
+
+4. plt.xlim(range) adds a limit to the x axis
+
+5. plt.title('Title') adds a title to the plot
+
+6. plt.ylim(range) adds a limit to the y axis
+
+7. plt.subplot(mnp) plots m rows by n columns and grabs p picture 
+
+-----------------------------------------------------
+
+D. Python
+
+Libaries: import warnings
+
+1. pwd returns the current path
+
+2. eval() makes a function from another function located inside a string
+
+3. dict() create a dictionary
+
+4. warnings.filterwarnings('ignore') ignores warnings
+
+-----------------------------------------------------
+
+D. Time
+
+import time
+
+1.  time.sleep(t) provides a delay
+
+
+-----------------------------------------------------
+F. OpenCV
+
+library: import cv2
+
+1. cv2.imread(path) opens an images from the indicated path
+
+2. cv2.cvtColor(img,cv2.COLOR_BGR2RGB) converts the  colors to the correct order in MATPLOTLIB from BGR to RGB
+
+3. cv2.resize(img,shape) resizes an image without ratio to the indicated shape
+
+4. cv2.resize(img,(0,0),img,w_ratio,h_ratio)
+#resize an image img with ratio, new perecantge not percentage off to the width ratio and height ratio
+
+5. cv2.flip(img,1) flips an image 
+    0 -> flip about the horizontal
+    1 -> flip about the vertical
+   -1 -> flip about both vertical and horizontal
+
+6. cv2.imwrite('path',img) save new image file in a new location
+
+7. cv2.rectangle(img,pt1,pt2,color,thickness) draw a rectangle on an image, pt1 is the vertex, or top left corner of the rectangle, pt2 is the bottom right corner of the rectangle
+
+8. cv2.circle(img,center,radius,color,thickness) draw a circle on an image given its center and radius
+thickness =-1 is the shape is to be fillled
+
+9. font = cv2.FONT_HERSHEY_SIMPLEX
+cv2.putText(img,text,orgin,fontFace=font,fontScale,color,thickness,lineType=cv2.LINE_AA) adds text to an image, define a font, the image to add text to, the text to be added, bottom left corner position of the text,font defined, fontscale trial and error, color... for white use color=(255,255,255), thickness,and linetype
+
+10.cv2.polylines(img,[pts],isClosed=True,color,thickness) drwas a polygon given its verticies reshaped by: 
+pts = vertices.reshape((-1,1,2))
+
+11. cv2.addWeighted(img1,alpha,img2,beta,gamma) blends images that are resized to the same size togther using added weight function
+
+12. cv2.cvtColor(img,cv2.COLOR_RGB2GRAY) --> plt.imshow(img,cmap='gray') convert image img to grayscale
+
+13. cv2.bitwise_not(img2gray) --> plt.imshow(mask_inv,cmap='gray') inverts the color of images, black to white, and white to black, but returns only gray color not RGB (m,n) not (m,n,3)
+
+14. cv2.bitwise_or(img1,img2,mask) creates an image on every layer of the 3 RGB layers if img1=img2 and white background and the mask is an inversion of greayscale mapped colors
+
+15. ret,thresh1 = cv2.threshold(img,threshold value,max value,type of thresholding)
+# apply a threshold, any value less than 127 will be 0 
+# and any value above 127 will be set to the max
+
+16. cv2.adaptiveThreshold(img,max value,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,neighbor value,constant) applies an adaptive threshold by comparing not only the maximum, but also the neighboring pixels. 
+
+17. cv2.filter2D(img,-1,kernel) applies a filter on an image with the use of a kernel by blurring the image, -1 means that output depth is equal in the input image
+
+18. cv2.blur(img,ksize=(m,n)) applies a blur on an image using the default blurring kernel
+
+19. cv2.GaussianBlur(img,(m,n),sigma) Guassian blur technique
+
+20. cv2.medianBlur(img,5) median blurring on a square kernel... best used for reducing noise in an image
+
+21. cv2.bilateralFilter(img,9,75,75) bilateral filter blurring on an image to remove noise but is slower
+
+22. cv2.erode(img,kernel,iterations) applies a morphological erosion operation, removing edges using kernel and is applied for the specifies the number of iterations
+
+23. cv2.morphologyEx(img,cv2.MORPH_...,kernel) applies opening (erosion + dilation) to the image to remove noise
+MORPH_OPEN removes with background noise, MORPH_CLOSE removes with foreground noise, MORPH_GRADIENT takes the difference between erosion and dilation, keeping only the edges
+
+24. cv2.Sobel(img,cv2.CV_64F,dx,dy,ksize) applies a sobel gradient on an image, CV_64F is the data type, dx and dy are directions for x and y, and ksize is the kernel
+
+25. cv2.Laplacian(img,cv2.CV_64F) applies a laplacian gradient on both x and y axes
+
+26. cv2.calcHist([img],channels,mask,histSize,ranges) works only on the BGR OpenCV color coding(channels) , calculates the histogram of a color for an image on x-axis and pixel count for each color, size is the number of colors
+
+27. cv2.bitwise_and(img,img,mask) adding a mask to an image
+
+28. cv2.equalizeHist(img) perform histogram equalization on the img
+
+29. cv2.VideoCapture(0) captures the webcam of a computer
+
+30. int(img.get(cv2.CAP_PROP_FRAME_WIDTH)) int(img.get(cv2.CAP_PROP_FRAME_HEIGHT)) returns the width and height of a video
+
+31. ret,frame = img.read() read from a camera images one after the other to be as a video, ret is the boolean output... true means frames are still returning
+
+32. img.release() closes the video
+
+33. writer = cv2.VideoWriter('mysupervideo.mp4',cv2.VideoWriter_fourcc(*'DIVX'),20,(width,height)) write to a video file capturing image by image and adding it to the video file, takes the name of the target file,  Windows video format DIVX as a string, the frames required per second, and the width and height of the image
+
+34. writer.write(frame) writes to the video file image by image
+
+35. writer.release() releases the video and saves
+
+36. cv2.matchTemplate(img1,img2,method) applies template matching and returns a heat map of the similarities between img1 and img2
+
+37. cv2.minMaxLoc(img) returns the minimum and maximum values and loaction of these values in an image
+
+38. cv2.cornerHarris(srcimggray,blockSize,ksize,k) performs Harris Corner Detection Algorithm on a source image in grayscale, blockSize is the size of neighbourhood considered for corner detection, ksize is the Aperture parameter of the Sobel derivative used, k is Harris detector free parameter in the equation
+
+39. cv2.dilate(img,None) perfroms dilation on an image
+
+40. goodFeaturesToTrack(imggray,maxCorners,qualityLevel,minDistance) returns the Shi-Tomasi Corner Detection Algorithm on a grascale image, using maximum number of corners... -1 returns all corners found, qualityLevel is the parameter characterizing the minimal accepted quality of image corners = 0.01, and minDistance minimum possible Euclidean distance between the returned corners = 10
+
+41. cv2.Canny(img,threshold1,threshold2) performs Canny edgde detection, for better results, blur the image first
+
+42. found,corners = cv2.findChessboardCorners(img_chess,size) returns chessboard corners for grid detection
+
+43. cv2.drawChessboardCorners(flat_chess,(7,7),corners,found) draws on the image the corners found
+
+44. found,corners = cv2.findCirclesGrid(dots,(10,10),cv2.CALIB_CB_SYMMETRIC_GRID) find circular grids 
+
+# 42 ----> 44 CAN BE USED FOR CAMERA CALLIBRATION
+
+45. image,contours,hierarchy = cv2.findContours(img,cv2.RETR_CCOMP,cv2.CHAIN_APPROX_SIMPLE) returns the number of contours in an image, internal and external contours, and an image
+
+46. cv2.drawContours(img,contours,i,color,filled) draws contour using a color on external contours using the contours array and make it filled?
+
+BRUTE-FORCE MATCHING WITH ORB DESCRIPTORS:
+
+47. cv2.ORB_create() create a detector object that detects and computes features
+
+48. keypoints,descriptors = detector.detectAndCompute(img,None) find keypoints and descriptors, detect and compute the description matches
+
+49. cv2.BFMatcher(cv2.NORM_HAMMING,crossCheck=True) Brute-Force Matching with default parameters
+
+50. bruteforcematcher.match(descriptor1,descriptor2) returns an array where checks matches occured
+
+51. sorted(matches,key=lambda x:x.distance) sort in order of distance, less distance --> better match... higher distnace --> worse match
+
+52. cv2.drawMatches(img1,keypoint1,img2,keypoint2,matches,None,flags=2)draw the matches on a new image... flags=0 shows the features matched with a circle on it
+
+BRUTE-FORCE MATCHING WITH SIFT DESCRIPTORS:
+
+53. cv2.xfeatures2d.SIFT_create() create sift detector object
+
+54. cv2.BFMatcher() compare matches by brute-force
+
+55. matches = bf.knnMatch(descriptor1,descriptor2,k=2) use knn matcher to find the top 2 matches(selected from k) will display matches in pairs
+
+56. cv2.drawMatchesKnn(img1,keypoint1,img2,keypoint2,matches,None,flags=2) draws the matches found on a new image
+
+FLANN BASED MATCHER
+
+57. cv2.FlannBasedMatcher(params,params) create a FLANN matcher
+
+58. flannmatcher.knnMatch(descriptor1,descriptor2,k=2) checks the matches in both images
+
+
+59. cv2.subtract(img1,img2) subtracts the pixels of the 2nd image from the 1st
+
+60. ret , markers = cv2.connectedComponents(sure_fg) getting markers
+
+61. markers = cv2.watershed(img,markers) apply waterhsed algorithm
+
+62. cv2.CascadeClassifier(path) opens the frontal face cascade file from path
+
+HAAR CASCADE
+
+63. face_cascade.detectMultiScale(face_img) Detects objects of different sizes in the input image. The detected objects are returned as a list
+
+64. nextPts,status,err = cv2.calcOpticalFlowPyrLK(prev_gray,frame_gray,prevPts,None,**lk_params) Calculates the optical flow tracking method, Pyramid-Lucas Kunade... stauts is an array which contans 1 when the flow of features in both frames has been found
+
+65. cv2.line(img,old_pos,new_pos,color,thickness) draws a line on an image from the old position to the new position
+
+66. cv2.add(img1,img2) adds to images to each other
+
+67. cv2.calcOpticalFlowFarneback(prvsImg,nextImg,None,some constant values(7)) Computes a dense optical flow using the Gunnar Farneback's algorithm
+
+68. mag , ang = cv2.cartToPolar(vals1,vals2,angleInDegrees=True) converts from cartesian to polar coordinates
+
+69. cv2.normalize(mag,None,val1,val2,cv2.NORM_MINMAX) grab nums to be stretched between val1 and val2
+
+70. calcBackProject([images], [channels], hist, [ranges], scale) calculate the histogram model of a feature and then use it to find this feature in an image
+
+71. ret , track_window = cv2.meanShift(probImage, window, criteria) Finds an object on a back projection image using MeanShift
+
+72. ret , track_window = cv2.CamShift(dst,track_window,term_crit) Finds an object center, size, and orientation using CamShift
+
+73. cv2.selectROI(frame, False) manually select an ROI from screen
+
+74. tracker.init(frame, roi) initalize tracker
+
+75. success, roi = tracker.update(frame) update tracker... success = 1 if tracking is working and 0 otherwise
+
+76. tracker = cv2.TrackerBoosting_create() create a Tracking Booster
+
+77. tracker = cv2.TrackerMIL_create() create an MIL tracker
+
+78. tracker = cv2.TrackerKCF_create() create a KCF tracker
+
+79. tracker = cv2.TrackerTLD_create() create a TLD tracker
+
+80. tracker = cv2.TrackerMedianFlow_create() create a Median Flow tracker
+
+
+-----------------------------------------------------
+Deep Learning and Keras
+
+Library: 	import numpy as np
+		from numpy import genfromtxt
+		from sklearn.model_selection import train_test_split
+		from sklearn.preprocessing import MinMaxScaler
+		from keras.models import Sequential
+		from keras.layers import Dense,Conv2D,MaxPool2D,Flatten
+		from sklearn.metrics import confusion_matrix,classification_report
+		from keras.models import load_model
+		from keras.utils.np_utils import to_categorical
+		from keras.preprocessing.image import ImageDataGenerator
+		from keras.layers import Activation,Dropout,Dense,Conv2D,MaxPooling2D,Flatten
+		from keras.preprocessing import image
+		
+		
+
+1. genfromtxt(path,delimiter) reads from a csv file
+
+2. X_train, X_test, y_train, y_test = train_test_split(X, y, test_size, random_state=42) seperates the training data from the test data using test_size ratio
+
+3. scalar_object = MinMaxScaler() scaler for values 
+
+4. scaled_train = scalar_object.transform(data) scale data
+
+5. model = Sequential() create a model
+
+6. model.add(Dense(num,input_dim,activation)) create a neural network with num input and activation function type
+
+7. model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy']) complies a model when output is binary
+
+8. model.fit(scaled_X_train,y_train,epochs=,verbose) trains a model with epochs iterations, on data and displays verbose iterations num
+
+9. predictions = model.predict_classes(scaled_X_test) predicts the values of the test data
+
+10. confusion_matrix(y_test,predictions) displays a confusion matrix
+
+11. print(classification_report(y_test,predictions)) displays a classification report
+
+12. model.save('name.h5') saves a model 
+
+13. newmodel = load_model('name.h5') loads a model
+
+14. newmodel.predict_classes(scaled_X_test) predicts the results of a model
+
+15. y_cat_train = to_categorical(y_train,10) convert to One-Hot Encoding
+
+16. model.add(Conv2D(filters,kernel_size,input_shape,activation)) CONVOLUTIONAL LAYER
+
+17. model.add(MaxPool2D(pool_size)) POOLING LAYER
+
+18. model.add(Flatten()) FLATTENING LAYER... 2D --> 1D
+
+19. model.summary() Details of CNN
+
+20. model.metrics_names returns the metrics names
+
+21. model.evaluate(x_test,y_cat_test) evaluates the model on the testing data
+
+22. model.compile(loss='categorical_crossentropy',optimizer='rmsprop',metrics=['accuracy']) compiles the model when output is not binary
+
+23. image_gen = ImageDataGenerator(rotation_range, # rotate the image
+                               width_shift_range, # Shift the pic width by a max of %
+                               height_shift_range, # Shift the pic height by a max of %
+                               rescale, # Rescale the image by normalzing it.
+                               shear_range, # Shear means cutting away part of the image %
+                               zoom_range, # Zoom in by % max
+                               horizontal_flip=True, # Allowing horizontal flipping
+                               fill_mode='nearest' # Fill in missing pixels with the nearest filled value
+                              )   ==> perform random opertions on the dataset to be more Robust
+
+24. model.add(Dropout(n)) n% to prevent overfitting, leave n out
+
+25. train_image_gen = image_gen.flow_from_directory(path,
+                                               target_size,
+                                               batch_size,
+                                               class_mode='binary')  
+# generating the training data on part of the data
+
+26. results = model.fit_generator(train_image_gen,
+					epochs,
+                              steps_per_epoch=,
+                             validation_data,
+                             validation_steps)
+# Test the data and validate using the testing data
+
+27. model.predict_classes(dog_img) predict or test the data and displays the output
+
+28. model.predict(dog_img) displays the accuracy
+
+29. image.load_img(img,target_size) load an image from the testing data and reshape it to the target size
+
+30. image.img_to_array(img) convert image to array
+
+
+
+
+
+
+
+
+
+
+

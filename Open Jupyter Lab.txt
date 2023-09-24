@@ -1,0 +1,5 @@
+conda deactivate
+
+conda activate python-cvcourse
+
+jupyter-lab
